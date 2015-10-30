@@ -1,0 +1,46 @@
+<template name="team">
+    <div class="col-md-offset-1 col-md-9">
+        <h1><b>Project Team</b></h1>
+
+        <div class="col-md-offset-8 col-md-12">
+            <form class="addusertoteam container">
+                <div class="form-group ">
+                    <select class="selectpicker " style="margin-left:-100px" name="text1" data-style="btn-info">
+                        {{#each projects}}
+                        <option value="{{_id}}">{{text}}</option>
+                        {{/each}}
+                    </select>
+                    <select class="selectpicker" name="text" data-style="btn-info">
+                        {{#each users}}
+                        <option value="{{_id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                    <input type="submit" class="btn btn-primary btn-md " value="Add">
+                </div>
+            </form>
+        </div>
+        <hr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <h4><b>Team Members</b></h4></th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {{#each team}}
+                <tr>
+                    <td>{{user_name}}
+                        <button type="button" class=" delete btn btn-link btn pull-right">
+                            <span class="glyphicon glyphicon-remove-sign"></span>
+                        </button>
+
+                    </td>
+                </tr>
+                {{/each}}
+              
+            </tbody>
+        </table>
+    </div>
+</template>

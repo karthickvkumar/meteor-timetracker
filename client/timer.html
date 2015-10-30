@@ -1,0 +1,166 @@
+<template name="timer">
+    <div class="col-md-offset-1 col-md-9">
+        <h1><b>Timer</b></h1>
+        <form class="timer">
+        <div class="col-md-offset-8 col-md-1">
+            <select class="selectpicker styled-select" name="projects" data-style="btn-info">
+                <option value="0" selected="" disabled="">Projects</option>
+                {{#each projects}}
+                <option value="{{_id}}">{{text}}</option>
+                 {{/each}}
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-4">
+                    <input type="text" name="description" class="form-control" placeholder="What you have done?" aria-describedby="basic-addon2" style="margin-top:30px;">
+            </div>
+            <div class="col-sm-1 col-md-2">
+                <select class="selectpicker styled-select" name="tag" data-style="btn-info" style="margin-top:30px;">
+                <option value="0" selected="" disabled="">Tags</option>
+                   {{#each tags }}
+                    <option value="{{_id}}">{{text}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="duration" class="form-control" value="__:__" data-mask="__:__" placeholder="00:00" aria-describedby="basic-addon2" style="margin-top:30px;">
+
+<script>
+Array.prototype.forEach.call(document.body.querySelectorAll("*[data-mask]"), applyDataMask);
+
+function applyDataMask(field) {
+    var mask = field.dataset.mask.split('');
+    
+    // For now, this just strips everything that's not a number
+    function stripMask(maskedData) {
+        function isDigit(char) {
+            return /\d/.test(char);
+        }
+        return maskedData.split('').filter(isDigit);
+    }
+    
+    // Replace `_` characters with characters from `data`
+    function applyMask(data) {
+        return mask.map(function(char) {
+            if (char != '_') return char;
+            if (data.length == 0) return char;
+            return data.shift();
+        }).join('')
+    }
+    
+    function reapplyMask(data) {
+        return applyMask(stripMask(data));
+    }
+    
+    function changed() {   
+        var oldStart = field.selectionStart;
+        var oldEnd = field.selectionEnd;
+        
+        field.value = reapplyMask(field.value);
+        
+        field.selectionStart = oldStart;
+        field.selectionEnd = oldEnd;
+    }
+    
+    field.addEventListener('click', changed)
+    field.addEventListener('keyup', changed)
+}
+</script>
+
+            </div>
+            <div class="col-md-2">
+                <script>
+                $(function() {
+                    $("#datepicker").datepicker();
+                });
+                </script>
+                <div class="inner-addon left-addon">
+                    <input type="text" name="date" class="form-control" id="datepicker" placeholder="Pick Date" aria-describedby="basic-addon2" style="margin-top:30px;">
+                </div>
+            </div>
+            <div class="col-md-1">
+                <input type="submit" class="btn btn-primary btn-md" value="Save" style="margin-top:30px;">
+            </div>
+        </div>
+       
+             </form>
+        <!--ADDING NEW TAG-->
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#Mymodal" style="margin-left:295px;">
+            Add new tag
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="Mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Edit Tag Name</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="edit container">
+                            <div class="form-group">
+                                <input type="text" name="text" class="select" value="{{text}}">
+                                <input type="submit" class="btn btn-primary btn-md" value="Update">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--DISPLAYING TASK IN TABLE-->
+         {{#each timer}}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th colspan="3">{{date}}</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                <tr>
+                    <td class="col-md-8">{{description}}
+                        </td>
+                            <td>{{project_name}}
+                                </td>
+                                    <td>{{duration}}
+                                      
+                                            <button type="button" class="delete btn btn-link btn pull-right">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-link btn pull-right" data-toggle="modal" data-target="#{{_id}}">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </button>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="myModalLabel">Edit Tag Name</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="edit container">
+                                                                <div class="form-group">
+                                                                    <input type="text" name="text" class="select" value="{{LOOP}}">
+                                                                    <input type="submit" class="btn btn-primary btn-md" value="Update">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                </tr>
+            </tbody>
+        </table>
+    {{/each}}
+
+       
+    </div>
+</template>

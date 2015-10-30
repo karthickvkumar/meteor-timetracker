@@ -1,0 +1,72 @@
+<template name="navigation">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
+    <header id="header">
+         <embed src="http://www.clocklink.com/clocks/5005-black.swf?TimeZone=GMT0530" width="120" height="45" wmode="transparent" type="application/x-shockwave-flash" style="margin-left:420px;" >
+        <div id="logo-group">
+            <span id=""><p><b><h4>&nbsp;&nbsp;Time Tracker</h4></b></p></span>
+
+        </div>
+            </header>
+    <div id="logo-group">
+        <aside id="left-panel">
+            <div class="login-info">
+                <span>             
+                        <img src= "img/img.png" alt="me" class="online" />
+                        <span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{> loginButtons}}
+                        </span>
+                </span>
+            </div>
+            <nav>
+                <ul>
+                    <li class="">
+                        <a href="{{pathFor'timer'}}"><span class="">Timer</span></a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor'master'}}"><span class="">Master</span></a>
+                        <li>
+                            <a href="{{pathFor'projects'}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Projects</a>
+                        </li>
+                        <li>
+                            <a href="{{pathFor'tag'}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tags</a>
+                        </li>
+                        <li>
+                            <a href="{{pathFor'company'}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Company</a>
+                        </li>
+                        <li>
+                            <a href="{{pathFor'users'}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Users</a>
+                        </li>
+                    </li>
+                    <li>
+                        <a href="{{pathFor'reports'}}"><span class="menu-item-parent">Reports</span></a>
+                        <li>
+                            <a href="{{pathFor'summary'}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Summary</a>
+                        </li>
+                        <li>
+                            <a href="{{pathFor'detailed'}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detailed </a>
+                        </li>
+                        <li>
+                            <a href="{{pathFor'metrics'}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Metrics</a>
+                        </li>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <!--     <div id="main1" role="main">-->
+    <div id="ribbon">
+        <span class="ribbon-button-alignment">
+                    <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="" data-html="true">
+                    </span>
+        </span>
+        <ol class="breadcrumb">
+            <li>Home</li>
+        </ol>
+    </div>
+    <div class="page-footer">
+                <!-- <div class="col-xs-12 col-sm-6"> -->
+                    <span class="txt-color-white">
+                    
+            <h6>Atomic IT Solutions &copy; 2015 All Rights Reseverd</h6></span>
+    </div>
+</template>

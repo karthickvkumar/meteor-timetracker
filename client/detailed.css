@@ -1,0 +1,27 @@
+.styled-sel {
+    width: 160px;
+    height: 34px;
+    overflow: hidden;
+    background: transparent;
+    border: 1px solid #ccc;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #777;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: 'Arial';
+    font-size: 13px;
+}
+
+.tick {
+    stroke-dasharray: 1, 2;
+}
+
+.bar {
+    fill: FireBrick;
+}

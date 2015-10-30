@@ -1,0 +1,14 @@
+.styled-select {
+   width: 120px;
+height: 34px;
+overflow: hidden;
+background: transparent;
+border: 1px solid #ccc;
+   }
+.styled {
+   width: 240px;
+height: 34px;
+overflow: hidden;
+background: transparent;
+border: 1px solid #ccc;
+   }

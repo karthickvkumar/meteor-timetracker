@@ -1,0 +1,56 @@
+<template name="company">
+    <div class="col-md-offset-1 col-md-9">
+        <h1><b>Company</b></h1>
+        <form class="companyname">
+            <div class="form-group pull-right">
+                <input type="text" name="text" class="styled" placeholder="Add company name here">
+                <input type="submit" class="btn btn-primary btn-md" value="Add">
+            </div>
+        </form>
+        <hr style="margin-top:65px">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Company Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each companies}}
+                <tr>
+                    <td>{{text}}
+                        <button type="button" class="delete btn btn-link btn pull-right">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                        <button type="button" class="btn btn-link btn pull-right select" data-toggle="modal" data-target="#{{_id}}">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Edit Company Name</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="edit">
+                                            <div class="form-group">
+                                                <label>Company Name <input type="text" name="text" class="select" value="{{text}}">  </label>
+                                                <input type="submit" class="btn btn-primary btn-md pull-right" value="Update">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>

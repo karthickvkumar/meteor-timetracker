@@ -1,0 +1,114 @@
+<template name="projects">
+    <div class="col-md-offset-1 col-md-9">
+        <h1><b>Projects</b></h1>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">
+            New Project</button>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Add New Project</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="projectname">
+                            <input type="text" name="text" class="styled" placeholder="Add name here">
+
+                            <select class="selectpicker styled-select" name="text1" data-style="btn-info">
+                        <option value="0" selected="" disabled="">Companies</option>
+                        {{#each companies}}
+                              <option value="{{_id}}">{{text}}</option> 
+                        {{/each}}
+                            </select>
+                            <input type="submit" class="btn btn-primary btn-md pull-right" value="Add">
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group pull-right" role="group" aria-label="...">
+
+            <a href="#" class="btn btn-default activated active">Active</a>
+            <a href="{{pathFor'archive'}}" class="btn btn-default ">Archived</a>
+
+        </div>
+        <hr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Company</th>
+                </tr>
+            </thead>
+            <tbody>{{#each projects}}
+                <tr>
+                    <td>{{text}}</td>
+
+                    <td>{{company_name}}
+
+                        <!-- Split button -->
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-primary ">View</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only"></span>
+                            </button>
+
+
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="archive">Archive</a></li>
+                                <li><a href="{{pathFor'team'}}" class="">Manage Team</a></li>
+
+                                <li><a href="#" class="delete">Delete</a></li>
+                            </ul>
+                        </div>
+                        <!--Edit button start here-->
+                        <button type="button" class="btn btn-link btn pull-right" data-toggle="modal" data-target="#{{_id}}">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Edit Project Name</h4>
+                                    </div>
+                                    <form class="edit">
+                                    <div class="modal-body">
+                                        
+                                            <div class="form-group">
+                                                <input type="text" name="text" class="select styled" value="{{text}}">
+                                                <select class="selectpicker styled-select" name="text1"  data-style="btn-info" >
+                                                 <option value="0" selected="" disabled="">Companies</option>   
+                                                {{#each companies}}
+                                                      <option value="{{_id}}">{{text}}</option> 
+                                                     
+                                                {{/each}}
+                                                    </select>
+                                                    
+                                                <input type="submit" class="btn btn-primary btn-md update pull-right" value="Update">
+                                            </div>
+                                        
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                 {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>
